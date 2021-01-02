@@ -7,7 +7,7 @@ SECRET_KEY = '&))o69*9@@ff#1=z6m6!cfrsj_x2b+yk@r0hrep@#_8ncs&smt'
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
