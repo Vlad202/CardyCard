@@ -1,9 +1,10 @@
 from pathlib import Path
 import os
 import django_heroku
+from .secret import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-SECRET_KEY = '&))o69*9@@ff#1=z6m6!cfrsj_x2b+yk@r0hrep@#_8ncs&smt'
+SECRET_KEY = SECRET_KEY
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
