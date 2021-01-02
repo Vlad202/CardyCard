@@ -1,0 +1,25 @@
+{% extends './auth.html' %}
+
+{% block auth %}
+    <form method="post">
+        {% csrf_token %}
+        <legend class="text-center">Регистрация</legend>
+        <div class="mb-3">
+          <label for="username" class="form-label">Логин:</label>
+          <input id="username" name="username" type="text" id="disabledTextInput" class="form-control" placeholder="Логин">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Почта:</label>
+          <input id="email" name="email" type="email" id="disabledTextInput" class="form-control" placeholder="Почта">
+        </div>
+        <div class="mb-3">
+          <label for="password1" class="form-label">Пароль:</label>
+          <input id="password1" name="password1" type="password" id="disabledTextInput" class="form-control" placeholder="Пароль">
+        </div>
+        <div class="mb-3">
+          <label for="password2" class="form-label">Подтвердите пароль:</label>
+          <input id="password2" name="password2" type="password" id="disabledTextInput" class="form-control" placeholder="Введите пароль ещё раз">
+        </div>
+        <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
+{% endblock %}

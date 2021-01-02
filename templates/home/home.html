@@ -1,0 +1,102 @@
+{% extends '../base.html' %}
+
+{% block title %}
+    {% if user.is_authenticated %}
+        {{ user.username }}
+    {% else %}
+        Hello
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Вы уверенны, что хотите удалить эту карточку?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                <a type="button" class="btn btn-danger" href="{% url 'delete_card' 0 %}"  id="accept-delete">Удалить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container main main-cards-container">
+            <div class="row d-flex justify-content-center mb-3">
+                <div class="col col-md-8 col-lg-6 col-sm-12 col-12">
+                    <form action="create/" id="create-edit-form"  method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <h3>Создать карточку</h3>
+                        </div>
+                        <div class="mb-3">
+                          <label for="title" class="form-label">Заголовок</label>
+                          <input type="text" class="form-control" name="title" id="title" placeholder="Введите заголовок">
+                        </div>
+                        <div class="mb-3">
+                          <label for="text" class="form-label">Текст</label>
+                          <textarea class="form-control" name="text" id="text" placeholder="Введите текст" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <ul class="colors" id="color" name="color"></ul>
+                        </div>
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row card-column" data-masonry='{"percentPosition": true }'>
+                {% for card in cards %}
+                    <div class="col col-6 col-md-4 col-lg-3 col-sm-6 mb-3">
+                        <div class="card" id="card-{{ card.id }}" style="background-color: {{ card.color }}">
+                            <div class="card-header card-text">
+                                <div class="header-elements">
+                                    <strong class="header-strong">{{ card.title }}</strong>
+                                    <div class="card-manager-elements">
+                                        <svg data="{{ card.id }}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil manage-icon edit-icon" viewBox="0 0 16 16">
+                                          <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                                        </svg>
+                                        <svg data-bs-toggle="modal" data-bs-target="#exampleModal" data="{{ card.id }}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square manage-icon delete-icon" viewBox="0 0 16 16">
+                                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text card-body-text">{{ card.text }}</p>
+                            </div>
+                            <div class="card-footer card_details">
+                                <p class="detail_text">{{ card.created_at }}</p>
+                                {% if card.edited %}
+                                    <p class="detail_text">Edited</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="container main_hello">
+            <div class="row text-center">
+                <h1 class="mb-3 mt-3">CardyCard заметки</h1>
+                <p class="mb-3 mt-3">Создавайте стильные заметки используя CardyCard.<br>Свои рекомендации присылайте на телеграм <a href="https://t.me/SoVladlen13" class="telegram-a">@SoVladlen13</a></p>
+                <div>
+                    <a class="mb-3 mt-3 btn btn-primary auth-button" type="button"href="{% url 'login_page' %}">Войти</a>
+                </div>
+            </div>
+        <div class="row d-flex justify-content-center">
+            <div class="background-main text-center mb-3 mt-3">
+                <img src="/static/img/main.png" alt="main">
+                <img src="/static/img/main2.png" alt="main">
+                <img src="/static/img/main3.png" alt="main">
+            </div>
+        </div>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends '../base.html' %}
+
+{% block content %}
+    <div class="container auth-block d-flex justify-content-center align-items-center">
+        <div class="row auth-form">
+          <div class="col-xs-8 col-sm-10 col-md-10 col-lg-10 mx-auto">
+            {% block auth %}
+            {% endblock %}
+          </div>
+        </div>
+    </div>
+{% endblock %}
