@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="def497b8-a337-45d9-bcd9-d9bcb2134895" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/runtime.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToDoDjango/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoDjango/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +82,7 @@
       <option name="presentableId" value="Default" />
       <updated>1609182505971</updated>
       <workItem from="1609182593499" duration="70419000" />
-      <workItem from="1609602084138" duration="1055000" />
+      <workItem from="1609602084138" duration="1669000" />
     </task>
     <servers />
   </component>

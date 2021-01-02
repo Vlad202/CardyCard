@@ -28,7 +28,7 @@ SECRET_KEY = '&))o69*9@@ff#1=z6m6!cfrsj_x2b+yk@r0hrep@#_8ncs&smt'
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'localhost',
+    '127.0.0.1',
     'cardycard.herokuapp.com'
 ]
 
