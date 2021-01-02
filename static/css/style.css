@@ -3,15 +3,10 @@
     padding-top: 80px;
     /*min-height: 100vh;*/
 }
-body {
-    overflow: hidden;
-}
 .background-main {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    position: absolute;
-    overflow: hidden;
 }
 .telegram-a {
     text-decoration: none;
@@ -22,6 +17,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 .background-main img {
     max-width: 250px;
