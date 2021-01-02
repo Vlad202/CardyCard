@@ -1,6 +1,6 @@
 import os
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "kloudless.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "ToDoDjango.settings")
 from django.core.wsgi import get_wsgi_application
 from dj_static import Cling
 
